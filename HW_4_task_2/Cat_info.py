@@ -22,7 +22,10 @@ def get_cats_info(path):
         print("Can't find file or it was already created")
     except UnicodeDecodeError:
         print("File is not in UTF-8 encoding")
-    return cats_info_list
+    else:
+        for item in cats_list:                        # move returned list in block else
+            cats_info_list.append({"id": item[0], "name": item[1], "age": item[2]})
+        return cats_info_list
 
 cats_info = get_cats_info("cats_info.txt")
 print(cats_info)

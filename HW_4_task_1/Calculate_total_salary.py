@@ -14,14 +14,17 @@
 def total_salary(path):
     try:
         with open(path, "r", encoding="utf-8") as file:
-            new_list =[ int(item.split(",")[1]) for item in file.readlines()]
-            average_salary = sum(new_list) // len(new_list)
-            total_salar = sum(new_list)
+            new_list =[ float(item.split(",")[1]) for item in file.readlines()]
     except (FileNotFoundError, FileExistsError):
         print("File doesn't exist ")
     except UnicodeDecodeError:
         print("File has no UTF-8 encoding")
-    return (average_salary,total_salar)
+    except IndexError:
+        print("File is empty")              # added new except Index error to prevent divide by zero (len(new_list) can't be 0 )
+    else:
+        average_salary = sum(new_list) // len(new_list)   #move variables in block else
+        total_salar = sum(new_list)
+        return (average_salary,total_salar)
 
 
 total, average = total_salary("Salaries.txt")  #Use relative path but can use absolute path also like r"C:/Users/Arthur/PycharmProjects/For Tests/Homework_4/HW_4_task_1/Salaries.txt"
