@@ -17,8 +17,6 @@ def get_cats_info(path):
         with open (path, "r", encoding="utf-8") as file:
             cats_list = [item.strip().split(",") for item in file.readlines()]
             cats_info_list = []
-            for item in cats_list:
-                cats_info_list.append({"id": item[0], "name" : item[1], "age" : item[2]})
     except (FileNotFoundError,FileExistsError):
         print("Can't find file or it was already created")
     except UnicodeDecodeError:
