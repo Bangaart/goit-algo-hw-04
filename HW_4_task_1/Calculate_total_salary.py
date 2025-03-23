@@ -12,6 +12,8 @@
 
 
 def total_salary(path):
+
+
     try:
         with open(path, "r", encoding="utf-8") as file:
             new_list =[ float(item.split(",")[1]) for item in file.readlines()]
