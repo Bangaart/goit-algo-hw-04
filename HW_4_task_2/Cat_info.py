@@ -12,6 +12,7 @@
 
 def get_cats_info(path):
 
+
     try:
         with open (path, "r", encoding="utf-8") as file:
             cats_list = [item.strip().split(",") for item in file.readlines()]
