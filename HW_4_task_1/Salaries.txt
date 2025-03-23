@@ -1,0 +1,6 @@
+Alex Korp,3000
+Nikita Borisenko,2000
+Sitarama Raju,1000
+Berheim Null, 4320
+User 4,3212
+User 5,7800
