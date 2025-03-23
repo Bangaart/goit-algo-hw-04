@@ -26,7 +26,7 @@ def total_salary(path):
     else:
         average_salary = sum(new_list) // len(new_list)   #move variables in block else
         total_salar = sum(new_list)
-        return (average_salary,total_salar)
+        return (total_salar, average_salary)
 
 
 total, average = total_salary("Salaries.txt")  #Use relative path but can use absolute path also like r"C:/Users/Arthur/PycharmProjects/For Tests/Homework_4/HW_4_task_1/Salaries.txt"
