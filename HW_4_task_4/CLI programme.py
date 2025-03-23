@@ -5,17 +5,24 @@ def input_parcer(user_input):
 
 
 def add_command(args,contacts):
-    name, phone = args
-    contacts[name] = phone
-    return "Contact added"
+    if not len(args) ==2:
+        return "Please enter correct Name and Phone. Example: Arthur 0991112233"
+    else:
+        name, phone = args
+        contacts[name] = phone
+        return "Contact added"
 
 def change_username(args, contacts):
-    name, phone = args
-    if name in contacts:
-        contacts[name] = phone
-        return "Contact changed"
+    if not len(args) ==2:
+        return "Please enter correct Name and Phone for changing. Example: Arthur 0991112233"
     else:
-        return f"There is no such contact in the list yet. {add_command(args,contacts)}"
+        name, phone = args
+        if name in contacts:
+            name, phone = args
+            contacts[name] = phone
+            return "Contact changed"
+        else:
+            return f"There is no such contact in the list yet. {add_command(args,contacts)}"
 
 def get_phone(args, contacts):
     name = args[0]
@@ -23,6 +30,9 @@ def get_phone(args, contacts):
         return contacts[name]
     else:
         return "No find such name"
+
+def get_all(contacts):
+    return [f"{key} : {value}\n" for key ,value in contacts.items()]
 
 def main():
     contacts = {}
@@ -33,7 +43,7 @@ def main():
 
 
         if command in ["exit", "close"]:
-            print("Goodbye")
+            print("Good bye")
             break
         elif command == "hello":
             print("How can i help you")
@@ -43,6 +53,8 @@ def main():
             print(change_username(args,contacts))
         elif command == "phone":
             print(get_phone(args,contacts))
+        elif command == "all":
+            print(*get_all(contacts))
         else:
             print("Invalid command")
 
